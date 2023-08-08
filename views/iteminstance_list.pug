@@ -1,0 +1,19 @@
+extends layout 
+
+block content 
+	h1= title 
+
+
+	ul 
+		each val in iteminstance_list 
+			li 
+				a(href=val.url) #{val.item.name} : #{val.arrivalDate_formatted} - #{val.useByDate_formatted}
+				if val.amount > 10 
+					span.text-success #{val.amount}
+				else if val.amount > 5
+					span.text-danger #{val.amount}
+				else 
+					span.text-warning  #{val.amount}
+				
+		else 
+			li There are no items instances in the inventory
