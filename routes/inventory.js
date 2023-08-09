@@ -10,7 +10,7 @@ const itemInstanceController = require("../controllers/itemInstanceController");
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Inventory page' });
 });
-
+/*
 // GET request for creating an Item.
 router.get("/item/create", itemController.getCreateItem);
 
@@ -50,6 +50,41 @@ router.get("/category/:id/delete", categoryController.getDeleteCategory);
 router.post("/category/:id/delete", categoryController.postDeleteCategory);
 
 // GET request for updating a category
+router.get("/category/:id/update", categoryController.getUpdateCategory);
 
+// POST request for updating a category
+router.post("/category/:id/update",categoryController.postUpdateCategory);
+
+// GET request for single Category details
+router.get("/category/:id", categoryController.getCategoryDetails);
+
+// GET request for list of all categories
+router.get("/categories", categoryController.getCategoryList);
+
+/// ITEM INSTANCE ROUTES ///
+
+// GET request for creating an ItemInstance
+router.get("/iteminstance/create", itemInstanceController.getCreateItemInstance);
+
+// POST request for creating an ItemInstance
+router.post("iteminstance/create", itemInstanceController.postCreateItemInstance);
+
+// GET request for deleting an ItemInstance
+router.get("/itemintance/:id/delete", itemInstanceController.getDeleteItemInstance);
+
+// POST request for deleting an ItemInstance
+router.post("/iteminstance/:id/delete", itemInstanceController.postDeleteItemInstance);
+
+// GET request for updating an ItemInstance
+router.get("/iteminstance/:id/update", itemInstanceController.getUpdateItemInstance);
+
+// POST request for updatin an ItemInstance
+router.post("/iteminstance/:id/update", itemInstanceController.postUpdateItemInstance);
+
+*/
+// GET request for details for a single ItemInstnace
+router.get("/iteminstance/:id", itemInstanceController.getItemInstanceDetails);
+// GET request for list of all ItemInstances
+router.get("/iteminstances", itemInstanceController.getItemInstanceList);
 
 module.exports = router;

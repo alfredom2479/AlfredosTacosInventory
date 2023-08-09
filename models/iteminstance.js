@@ -20,13 +20,13 @@ ItemInstanceSchema.virtual("url").get(function(){
 });
 
 ItemInstanceSchema.virtual("arrivalDate_formatted").get(function(){
-    return arrivalDate ? 
+    return this.arrivalDate ? 
         DateTime.fromJSDate(this.arrivalDate).toISODate()
         : '';
 });
 
 ItemInstanceSchema.virtual("useByDate_formatted").get(function(){
-    return useByDate ?
+    return this.useByDate ?
         DateTime.fromJSDate(this.useByDate).toISODate()
         : '';
 });

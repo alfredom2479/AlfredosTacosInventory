@@ -1,0 +1,24 @@
+extends layout 
+
+block content 
+
+  h1 ID: #{iteminstance._id}
+
+  p #[strong Item:]
+    a(href=iteminstance.item.url)  #{iteminstance.item.name}
+  p #[strong Arrived:] #{iteminstance.arrivalDate_formatted}
+  p #[strong UseBy:] #{iteminstance.useByDate_formatted}
+
+  p #[strong Amount:]
+    if iteminstance.amount > 10 
+      span.text-success  #{iteminstance.amount}
+    else if iteminstance.amount > 5
+      span.text-warning  #{iteminstance.amount}
+    else 
+      span.text-danger  #{iteminstance.amount}
+
+  hr
+  p 
+    a(href=iteminstance.url+'/update') Update Item Instace
+  p 
+    a(href=iteminstance.url+'/delete') Delete Item Instance
