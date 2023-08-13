@@ -21,11 +21,23 @@ ItemInstanceSchema.virtual("url").get(function(){
 
 ItemInstanceSchema.virtual("arrivalDate_formatted").get(function(){
     return this.arrivalDate ? 
-        DateTime.fromJSDate(this.arrivalDate).toISODate()
+        DateTime.fromJSDate(this.arrivalDate).toLocaleString(DateTime.DATE_MED)
         : '';
 });
 
 ItemInstanceSchema.virtual("useByDate_formatted").get(function(){
+    return this.useByDate ?
+        DateTime.fromJSDate(this.useByDate).toLocaleString(DateTime.DATE_MED)
+        : '';
+});
+
+ItemInstanceSchema.virtual("arrivalDate_yyyy_mm_dd").get(function(){
+    return this.arrivalDate ? 
+        DateTime.fromJSDate(this.arrivalDate).toISODate()
+        : '';
+});
+
+ItemInstanceSchema.virtual("useByDate_yyyy_mm_dd").get(function(){
     return this.useByDate ?
         DateTime.fromJSDate(this.useByDate).toISODate()
         : '';

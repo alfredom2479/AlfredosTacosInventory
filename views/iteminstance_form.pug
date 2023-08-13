@@ -1,0 +1,33 @@
+extends layout 
+
+block content 
+  h1=title 
+
+  form(method='POST' action='')
+    .form-group 
+      label(for='item') Item: 
+      select#book.form-control(type='select' placeholder='Select Item' name='item' required='true')
+        - item_list.sort(function(a,b){let textA = a.name.toLowerCase(); let textB = b.name.toLowerCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;});
+        for item in item_list 
+          option(value=item._id, selected=(selected_item==item._id.toString() ? 'selected' : false)) #{item.name}
+    
+    .form-group 
+      label(for='arrival_date') Arrival Date: 
+      input#arrival_date.form-control(type='date' name='arrival_date' value=(iteminstance===undefined ? '' : iteminstance.arrivalDate_yyyy_mm_dd))
+    .form-group 
+      label(for='useby_date') Use-By Date: 
+      input#useby_date.form-control(type='date' name='useby_date' value=(iteminstance===undefined ? '' : iteminstance.useByDate_yyyy_mm_dd))
+    
+    .form-group 
+      label(for='amount') Amount: 
+      input#amount.form-control(type='number' name='amount' value=(iteminstance===undefined ? '' : iteminstance.amount))
+    .form-group 
+      label(for='notes') Notes:
+      input#notes.form-control(type='text' name='notes' value=(iteminstance===undefined ? '' : iteminstance.notes))
+    
+    button.btn.btn-primary(type='submit') Submit
+
+  if errors 
+    ul 
+      for error in errors
+        li!= error.msg

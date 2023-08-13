@@ -61,16 +61,18 @@ router.get("/category/:id", categoryController.getCategoryDetails);
 // GET request for list of all categories
 router.get("/categories", categoryController.getCategoryList);
 
+*/
 /// ITEM INSTANCE ROUTES ///
 
 // GET request for creating an ItemInstance
 router.get("/iteminstance/create", itemInstanceController.getCreateItemInstance);
 
 // POST request for creating an ItemInstance
-router.post("iteminstance/create", itemInstanceController.postCreateItemInstance);
+router.post("/iteminstance/create", itemInstanceController.postCreateItemInstance);
+//router.post("/iteminstance/create",()=>console.log('test'));
 
 // GET request for deleting an ItemInstance
-router.get("/itemintance/:id/delete", itemInstanceController.getDeleteItemInstance);
+router.get("/iteminstance/:id/delete", itemInstanceController.getDeleteItemInstance);
 
 // POST request for deleting an ItemInstance
 router.post("/iteminstance/:id/delete", itemInstanceController.postDeleteItemInstance);
@@ -81,7 +83,6 @@ router.get("/iteminstance/:id/update", itemInstanceController.getUpdateItemInsta
 // POST request for updatin an ItemInstance
 router.post("/iteminstance/:id/update", itemInstanceController.postUpdateItemInstance);
 
-*/
 // GET request for details for a single ItemInstnace
 router.get("/iteminstance/:id", itemInstanceController.getItemInstanceDetails);
 // GET request for list of all ItemInstances

@@ -1,0 +1,15 @@
+extends layout 
+
+block content 
+  h1 #{title}: #{iteminstance.item.name} 
+  h3 Amount: #{iteminstance.amount}
+  p Arrived: #{iteminstance.arrivalDate_formatted} 
+  p Use By:  #{iteminstance.useByDate_formatted}
+
+  p Do you really want to delete this Item Instance?
+
+  form(method='POST' action='')
+    .form-group 
+      input#iteminstanceid.from-control(type='hidden',name='iteminstanceid',required='true' value=iteminstance._id)
+
+    button.btn.btn-primary(type='submit') Delete
