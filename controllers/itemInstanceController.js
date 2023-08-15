@@ -10,6 +10,8 @@ exports.getItemInstanceList = asyncHandler(async (req,res,next)=>{
         .find()
         .populate("item")
         .exec();
+
+    console.log(allItemInstances);
     
     res.render("iteminstance_list",{
         title: "Item Instance List",
@@ -58,7 +60,6 @@ exports.postCreateItemInstance = [
     .isNumeric(),
 
   asyncHandler(async (req,res,next) =>{
-    console.log('async handler');
     const errors = validationResult(req);
 
     const itemInstance = new ItemInstance({
@@ -70,7 +71,6 @@ exports.postCreateItemInstance = [
     });
 
     if(!errors.isEmpty()){
-      console.log("errors");
       const allItems = await Item.find({}, "name").exec();
 
       res.render("iteminstance_form",{
@@ -95,7 +95,6 @@ exports.getDeleteItemInstance = asyncHandler(async (req,res,next)=>{
   if( itemInstance === null){
     res.redirect("/inventory/iteminstances");
   }
-  console.log(itemInstance);
 
   res.render("iteminstance_delete",{
     title: "Delete Item Instance",
@@ -148,6 +147,7 @@ exports.postUpdateItemInstance = [
 
     const itemInstance = new ItemInstance({
       name: req.body.name,
+      item: req.body.item,
       amount: req.body.amount,
       arrivalDate: req.body.arrival_date,
       useByDate: req.body.useby_date,
@@ -156,7 +156,7 @@ exports.postUpdateItemInstance = [
     });
 
     if(!errors.isEmpty()){
-      const allItems = await Itme.find({},"name").exec();
+      const allItems = await Item.find({}).exec();
 
       res.render("iteminstance_form",{
         title: "Update Item Instance",

@@ -1,0 +1,13 @@
+extends layout 
+
+block content 
+  h1= title 
+
+  ul 
+    each val in item_list 
+      li 
+        a(href=val.url) #{val.name} ( #{val.category.name} )
+        p #{val.description}
+    
+    else
+      li There are no Items in the inventory

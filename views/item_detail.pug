@@ -1,0 +1,34 @@
+extends layout 
+
+block content 
+
+  h1 Name: #{item.name}
+
+  p #[strong Category:]
+    a(href=item.category.url)  #{item.category.name}
+  p #[strong Description/Notes:]  #{item.description}
+
+
+  div(style='margin-left:20px;margin-top:20px')
+    h4 Instances
+
+    each val in item_instances
+      hr
+      p #[strong Id:]
+        a(href=val.url) #{val._id}
+      if val.amount > 20
+        p.text-success  Amount: #{val.amount}
+      else if val.amount > 10
+        p.text-warning Amount: #{val.amount}
+      else 
+        p.text-danger Amount: #{val.amount}
+      p #[strong Arrival Date:] #{val.arrivalDate_formatted}
+      p #[strong Use-By Date:] #{val.useByDate_formatted}
+      
+    else 
+      p There are no instances of this item in the inventory
+    hr
+    p 
+      a(href=item.url+'/delete') Delete Item
+    p 
+      a(href=item.url+'/update') Update Item

@@ -1,0 +1,29 @@
+extends layout 
+
+block content 
+  h1 #{title}: #{item.name}
+  h2 Category: #{item.category.name}
+
+  if item_instances.length 
+
+    p #[strong Delete the following instances before attempting to delete this item.]
+
+    div(style='margin-left:20px;margin-top:20px')
+
+      h4 Item Instances
+
+      dl
+      each instance in item_instances 
+        dt 
+          a(href=instance.url) #{instance._id}
+        dd Amount: #{instance.amount}
+        dd Arrival Date: #{instance.arrivalDate_formatted} 
+        dd Use-By Date:  #{instance.useByDate_formatted}
+  else 
+    p Do you really want to delete this Item?
+
+    form(method='POST' action='')
+      .form-group 
+        input#itemid.form-control(type='hidden',name='itemid',required='true', value=item._id)
+  
+      button.btn.btn-primary(type='submit') Delete

@@ -10,12 +10,12 @@ const itemInstanceController = require("../controllers/itemInstanceController");
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Inventory page' });
 });
-/*
+
 // GET request for creating an Item.
 router.get("/item/create", itemController.getCreateItem);
 
 // POST request for cresating Item
-router.post("/item/cresate", itemController.postCreateItem);
+router.post("/item/create", itemController.postCreateItem);
 
 // GET request to delete Item
 router.get("/item/:id/delete", itemController.getDeleteItem);
@@ -37,6 +37,7 @@ router.get("/items", itemController.getItemList);
 
 /// CATEGORY ROUTES ///
 
+/*
 // GET request for creating a category
 router.get("/category/create", categoryController.getCreateCategory);
 

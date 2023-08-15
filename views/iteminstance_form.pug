@@ -6,7 +6,7 @@ block content
   form(method='POST' action='')
     .form-group 
       label(for='item') Item: 
-      select#book.form-control(type='select' placeholder='Select Item' name='item' required='true')
+      select#item.form-control(type='select' placeholder='Select Item' name='item' required='true')
         - item_list.sort(function(a,b){let textA = a.name.toLowerCase(); let textB = b.name.toLowerCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;});
         for item in item_list 
           option(value=item._id, selected=(selected_item==item._id.toString() ? 'selected' : false)) #{item.name}
