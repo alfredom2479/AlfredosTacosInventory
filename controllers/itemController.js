@@ -3,7 +3,7 @@ const ItemInstance = require('../models/iteminstance');
 const Category = require('../models/category');
 
 const asyncHandler = require("express-async-handler");
-const {body, validateResult, validationResult} = require("express-validator");
+const {body, validationResult} = require("express-validator");
 
 exports.getItemList = asyncHandler(async (req,res,next)=>{
   const allItems = await Item.find().populate('category').exec();
@@ -73,8 +73,10 @@ exports.postCreateItem = [
       res.render("item_form",{
         title: "Create New Item",
         categories: allCategories,
-        allUnits: ["LBS","NUMBER","KG"]
+        allUnits: ["LBS","NUMBER","KG"],
+        errors: errors.array()
       });
+      return;
     }
     else{
       await item.save();
@@ -154,7 +156,8 @@ exports.postUpdateItem = [
         selected_category: item.category._id,
         categories: allCategories,
         allUnits: ["LBS","NUMBER","KG"],
-        selected_unit: item.unit
+        selected_unit: item.unit,
+        errors: errors.array()
       });
       return;
     }

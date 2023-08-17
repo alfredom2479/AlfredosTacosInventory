@@ -37,7 +37,6 @@ router.get("/items", itemController.getItemList);
 
 /// CATEGORY ROUTES ///
 
-/*
 // GET request for creating a category
 router.get("/category/create", categoryController.getCreateCategory);
 
@@ -62,7 +61,6 @@ router.get("/category/:id", categoryController.getCategoryDetails);
 // GET request for list of all categories
 router.get("/categories", categoryController.getCategoryList);
 
-*/
 /// ITEM INSTANCE ROUTES ///
 
 // GET request for creating an ItemInstance

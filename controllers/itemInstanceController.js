@@ -77,7 +77,7 @@ exports.postCreateItemInstance = [
         title: "Create Item Instance",
         item_list: allItems,
         slected_item: itemInstance.item._id,
-        erros: errors.array(),
+        errors: errors.array(),
         iteminstance: itemInstance
       });
       return;

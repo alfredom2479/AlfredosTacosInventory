@@ -1,0 +1,28 @@
+extends layout 
+
+block content 
+
+  h1 Name:  #{category.name}
+
+  p #[strong Description/Notes:] #{category.description}
+
+  div(style='margin-left:20px;margin-top:20px')
+    h4 Instances
+
+    each val in items
+      hr
+      p #[strong Name:]
+        a(href=val.url)  #{val.name}
+
+    else 
+      p There are no items of this category in your inventory
+
+    hr
+    p 
+      a(href=category.url+'/delete') Delete Category
+    p 
+      a(href=category.url+'/update') Update Category
+
+
+    
+  
